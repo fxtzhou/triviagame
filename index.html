@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Come On And Slam</title>
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Raleway|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
+    <div class="container">
     <h1>come on and slam and yokoso japan</h1>
-    <div id="question"></div>
-    <div id="time-remaining"></div>
-   
-    <div id="answers"></div>
+    <div id="start-button"><button id="start">Start</button></div>
+    <h4><div id="timeleft"></div></h4>
     
+    <div class="area">
+    <h2><div id="question"></div></h2>
+    
+
+    <h3><div id="answers"></div></h3>
+    <div id="submit"><button id="submit">Submit</button></div>
+
     <div id="correct-answer"></div>
-     <!-- congrats displayed when user picks the right answer-->
+    <!-- congrats displayed when user picks the right answer-->
     <div id="congrats"></div>
     <!-- timeout displayed when user runs out of time -->
     <div id="timeout"></div>
+</div>
 
     <div id="number-correct"></div>
     <div id="number-incorrect">
     </div>
-    <div id="restart-button">
-        <button id="restart"></button>
+    <div id="restart-button"></div>
+        <button id="restart">Play Again!</button>
     </div>
+</div>
 </body>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 </html>
