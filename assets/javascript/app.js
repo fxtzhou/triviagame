@@ -32,6 +32,9 @@ $("#start").on("click", function() {
  function displayQ() {
      $("#start").hide();
     $("#restart-button").hide();
+    $(".area").show();
+    $("#timeout").empty();
+    $("#correct-answer").empty();
     var q = questions[state.currentQ];
     $("#question").text(q.question);
     $("#timeleft").text(state.timeRemaining + " seconds left!"); //setRemainingTime();
@@ -44,6 +47,7 @@ $("#start").on("click", function() {
         answer.text(q.answers[i]);
  
     }
+
     $(".answer").on("click", function(){
         input = $(this).data("position"); 
         console.log (input);
@@ -58,7 +62,14 @@ $("#start").on("click", function() {
 
         else{
             $("#correct-answer").text("Incorrect! The correct answer is: " + q.answers[q.correctAnswer]);
+            $(".area").hide();
+            setTimeout(displayQ, 3*1000);
+            $("#timeout").text("Next question will appear in 3 seconds.");
+            state.currentQ++;
+            
         }
+
+        
     });
  }
 
