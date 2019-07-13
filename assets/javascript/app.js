@@ -10,6 +10,11 @@ var questions = [
         question: "What is CSS?",
         answers: ["Creative Style Sheets", "Cascading Style Sheets", "Counting Style Sheets", "Computer Style Sheets"],
         correctAnswer: 1
+    },
+    {
+        question: "What is love?",
+        answers: ["Creative Style Sheets", "Cascading Style Sheets", "Counting Style Sheets", "Computer Style Sheets"],
+        correctAnswer: 1
     }
 ]
 
@@ -22,14 +27,25 @@ var state = {
 
 $("#submit").hide();
 $("#restart").hide();
+$(".area").hide();
 
 $("#start").on("click", function() {
+    displayQ();
+    $(".area").show();
     $("#submit").show();
-    //  Set the button alert's timeout to run three seconds after the function's called.
-    startGame = setTimeout(function() {  
+    setTimeRemaining();
+    
+});
+
+function setTimeRemaining(){
+    // when time runs out, it will go to the next question
+    setTimeout(function(){ alert("Time's up!"); }, 10*1000);
+    state.currentQ++;
+}
  
 // game starts after 'start' button is clicked
  function displayQ() {
+    
      $("#start").hide();
     $("#restart-button").hide();
     $(".area").show();
@@ -39,6 +55,8 @@ $("#start").on("click", function() {
     $("#question").text(q.question);
     $("#timeleft").text(state.timeRemaining + " seconds left!"); //setRemainingTime();
     $("#answers").empty();
+
+
     for (var i = 0; i < q.answers.length; i++){
         var answer = $('<h3 data-position="$(i)">');
         answer.data("position", i);
@@ -73,10 +91,11 @@ $("#start").on("click", function() {
     });
  }
 
- displayQ();
+ 
 
-})
 
-});
+
+
+
 
 
