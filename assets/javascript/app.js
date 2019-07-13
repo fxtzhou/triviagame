@@ -55,6 +55,10 @@ $("#start").on("click", function() {
             state.currentQ++;
             displayQ();
         }
+
+        else{
+            $("#correct-answer").text("Incorrect! The correct answer is: " + q.answers[q.correctAnswer]);
+        }
     });
  }
 
