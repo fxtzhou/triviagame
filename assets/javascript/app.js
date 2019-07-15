@@ -2,6 +2,22 @@ var input = null;
 var correct = 0;
 var incorrect = 0;
 
+$(document).ready(function() {
+    $("#greenbtn").click(function() {
+        $("body").removeClass();
+        $("body").addClass("green");
+    });
+    $("#yellowbtn").click(function() {
+        $("body").removeClass();
+        $("body").addClass("yellow");
+    });
+    $("#skybluebtn").click(function() {
+        $("body").removeClass();
+        $("body").addClass("skyblue");
+    });
+});
+
+
 var questions = [{
         question: "What's the name of the planet that Rey was abandoned on?",
         answers: ["Tatooine", "Jakku", "Mustafar", "Coruscant"],
@@ -97,10 +113,11 @@ function displayQ() {
 }
 
 
+
 $("#submit").on("click", function () {
 
     if (input == null) {
-        $("#correct-answer").alert("Fear is the path to the dark side. An answer you must choose.");
+        alert("Fear is the path to the dark side. An answer you must choose.");
     } else if (input == questions[state.currentQ].correctAnswer) {
         $("#correct-answer").text("You are correct! Power! Unlimited Power!");
 
@@ -124,9 +141,6 @@ $("#submit").on("click", function () {
         setTimeout(displayQ, 3 * 1000);
         state.currentQ++;
     }
-
-
-
     resultsScreen();
     setTimeout(resultsScreen, 3 * 1000);
 
@@ -148,4 +162,7 @@ function resultsScreen() {
 
 $("#restart").click(function () {
     location.reload(true);
-});
+})
+
+
+
