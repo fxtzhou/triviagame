@@ -33,3 +33,7 @@ h4{
     border: 2px dashed grey;
     padding: 5px;
 }
+
+.correctAnswer{
+    font-style: bolder;
+}

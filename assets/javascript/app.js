@@ -2,21 +2,31 @@ var input = null;
 
 var questions = [
     {
-        question: "What does HTML stand for?",
-        answers: ["Hypertext Markup Language", "Home Type Markup Language", "Height-Text Markup Language", "High Text Markup Language"],
+        question: "What's the name of the planet that Rey was abandoned on?",
+        answers: ["Tatooine", "Jakku", "Mustafar", "Coruscant"],
+        correctAnswer: 1
+    },
+    {
+        question: "What is Kylo Ren's real name?",
+        answers: ["Ben Skywalker", "Ren Skywalker", "Ben Solo", "Ren Organa"],
+        correctAnswer: 2
+    },
+    {
+        question: "Which order put an end to all Jedi?",
+        answers: ["Order 69", "Order 42", "Order 66", "First Order"],
+        correctAnswer: 2
+    },
+    {
+        question: "What day is Star Wars Day celebrated?",
+        answers: ["April 20", "May 4", "August 2", "July 5"],
+        correctAnswer: 1
+    },
+    {
+        question: "Who is NOT a Sithlord?",
+        answers: ["Darth Maul", "Darth Vader", "Palpatine", "Darth Bane"],
         correctAnswer: 0
-    },
-    {
-        question: "What is CSS?",
-        answers: ["Creative Style Sheets", "Cascading Style Sheets", "Counting Style Sheets", "Computer Style Sheets"],
-        correctAnswer: 1
-    },
-    {
-        question: "What is love?",
-        answers: ["Creative Style Sheets", "Cascading Style Sheets", "Counting Style Sheets", "Computer Style Sheets"],
-        correctAnswer: 1
     }
-]
+];
 
 var state = {
     currentQ: 0,
@@ -41,7 +51,7 @@ function setTimeRemaining(){
     $("#timeleft").text(state.TimeRemaining + " seconds left!");
   
     if(state.TimeRemaining == 0){
-        alert("Time's up!");
+        alert("Time's up! You're lucky they want you alive. Next question.");
         state.currentQ++;
         displayQ();
         
@@ -49,7 +59,9 @@ function setTimeRemaining(){
 }
 
 function resetTime(){
+
     state.TimeRemaining = 10;
+    $("#timeleft").show();
     $("#timeleft").text(state.TimeRemaining + " seconds left!");
 }
 
@@ -72,37 +84,43 @@ function resetTime(){
         answer.addClass("answer");
         answer.appendTo("#answers");
         answer.text(q.answers[i]);
- 
     }
 
     $(".answer").on("click", function(){
         input = $(this).data("position"); 
         console.log (input);
     });
-
-    $("#submit").on("click", function(){
-        if (input == questions[state.currentQ].correctAnswer) {
-            console.log("nice");
-            state.currentQ++;
-            displayQ();
-        }
-
-        else{
-            $("#correct-answer").text("Incorrect! The correct answer is: " + q.answers[q.correctAnswer]);
-            $(".area").hide();
-            state.TimeRemaining = 10;
-            $("#timeleft").hide();
-            setTimeout(displayQ, 3*1000);
-            $("#timeout").text("Next question will appear in 3 seconds.");
-            state.currentQ++;
-            setTimeRemaining();
-        }
-
-        
-    });
+    console.log(state.currentQ);
+    
     
  }
 
+ $("#submit").on("click", function(){
+    if (input == questions[state.currentQ].correctAnswer) {
+        $("#correct-answer").text("You are correct! Power! Unlimited Power!");
+        console.log("nice");
+        $(".area").hide();
+
+        $("#timeleft").hide();
+        $("#timeout").text("Next question will appear in 3 seconds.");
+        
+       
+    }
+
+    else{
+        $("#correct-answer").text("Your overconfidence is your weakness. The correct answer is: " + questions[state.currentQ].answers[questions[state.currentQ].correctAnswer]);
+        console.log("soemthing");
+        $(".area").hide();
+
+        $("#timeleft").hide();
+        $("#timeout").text("Next question will appear in 3 seconds.");
+        
+        
+    }
+    setTimeout(displayQ, 3*1000);
+    state.currentQ++;
+    
+});
  
 
 
