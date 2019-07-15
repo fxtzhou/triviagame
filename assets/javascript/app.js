@@ -92,6 +92,7 @@ function displayQ() {
     $(".area").show();
     $("#timeout").empty();
     $("#correct-answer").empty();
+    $("#incorrect-answer").empty();
     var q = questions[state.currentQ];
     $("#question").text(q.question);
     $("#answers").empty();
@@ -115,12 +116,13 @@ function displayQ() {
 
 
 $("#submit").on("click", function () {
+    $("#correct-answer").empty();
+    $("#incorrect-answer").empty();
 
     if (input == null) {
         alert("Fear is the path to the dark side. An answer you must choose.");
     } else if (input == questions[state.currentQ].correctAnswer) {
         $("#correct-answer").text("You are correct! Power! Unlimited Power!");
-
         correct++;
         console.log(correct + " correct " + incorrect + " incorrect");
         $(".area").hide();
@@ -128,18 +130,22 @@ $("#submit").on("click", function () {
         $("#timeout").text("Next question will appear in 3 seconds.");
         setTimeout(displayQ, 3 * 1000);
         state.currentQ++;
+        $("correct-answer").empty();
 
 
-    } else {
-        $("#correct-answer").text("Your overconfidence is your weakness. The correct answer is: " + questions[state.currentQ].answers[questions[state.currentQ].correctAnswer]);
+    } else { 
+        $("#incorrect-answer").text("Your overconfidence is your weakness. The correct answer is: " + questions[state.currentQ].answers[questions[state.currentQ].correctAnswer]);
 
         incorrect++;
         console.log(correct + " correct " + incorrect + " incorrect");
+        
         $(".area").hide();
         $("#timeleft").hide();
         $("#timeout").text("Next question will appear in 3 seconds.");
         setTimeout(displayQ, 3 * 1000);
         state.currentQ++;
+     
+        $("incorrect-answer").empty();
     }
     resultsScreen();
     setTimeout(resultsScreen, 3 * 1000);

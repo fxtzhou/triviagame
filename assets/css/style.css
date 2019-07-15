@@ -1,8 +1,9 @@
-body{
-   
+body {
+    font-family: 'Roboto', serif;
+    font-size: 18px;
 }
 
-.container{
+.container {
     margin: auto;
     padding: 20px;
     text-align: center;
@@ -11,50 +12,69 @@ body{
 }
 
 
-.results{
+.results {
     margin: auto;
     padding: 20px;
     text-align: center;
     max-width: 700px;
-    
+    background: gainsboro;
 }
 
-h1{
+h1 {
     font-family: 'Bangers', serif;
     font-size: 48px;
 }
 
 /* questions */
-h2{
+h2 {
     font-family: 'Roboto', sans-serif;
-    font-size: 36px;
+    font-size: 30px;
+}
+
+.snippet{
+    font-family: 'Roboto', serif;
+    line-height: 36px;
+    font-size: 24px;
 }
 
 /* answers */
-h3{
-    font-family: 'Raleway', serif;
+h3 {
+    font-family: 'Roboto', serif;
+    font-size: 18px;
 }
 
 /* timeleft */
-h4{
+h4 {
     font-family: 'Roboto', serif;
-    font-size: 36px;
+    font-size: 24px;
 }
 
-.answer{
+.answer {
     border: 2px dashed grey;
     padding: 5px;
     background: lightgray;
 }
 
-.answer:hover{
+.answer:hover {
     background: grey;
     border: 5px solid black;
 }
 
 
-.correctAnswer{
-    font-style: bolder;
+#correct-answer {
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: blue;
+}
+
+#incorrect-answer {
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: red;
+}
+
+#timeout{
+    padding-bottom: 20px;
 }
 
 #start {
@@ -69,7 +89,7 @@ h4{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}
 
 #submit {
     font-family: 'Roboto', sans-serif;
@@ -83,11 +103,11 @@ h4{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}
 
-  #restart {
+#restart {
     font-family: 'Roboto', sans-serif;
-    background-color: red;
+    background-color: darkblue;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -97,4 +117,4 @@ h4{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}

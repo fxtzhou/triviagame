@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Wars Trivia Game</title>
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
 </head>
 
-<body>
+<body background="assets/images/star-wars-background.jpg">
     <div class="container">
         <h1>Young Padawan...</h1>
         <h3 class="snippet">Through the Force, things you will see. 10 seconds you shall have. Train yourself to let go
@@ -37,17 +37,15 @@
             <button id="submit">Submit</button>
         </div>
     </div>
-
     <div id="correct-answer"></div>
-    <div id="congrats"></div>
+    <div id="incorrect-answer"></div>
     <div id="timeout"></div>
 
 
     </div>
 
     <div class="results">
-        <div id="number-correct"></div>
-    </div>
+        <h3><div id="number-correct"></div></h3>
     <button id="restart">Play Again!</button>
     </div>
 </body>
