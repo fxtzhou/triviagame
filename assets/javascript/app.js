@@ -1,7 +1,8 @@
 var input = null;
+var correct = 0;
+var incorrect = 0;
 
-var questions = [
-    {
+var questions = [{
         question: "What's the name of the planet that Rey was abandoned on?",
         answers: ["Tatooine", "Jakku", "Mustafar", "Coruscant"],
         correctAnswer: 1
@@ -32,41 +33,43 @@ var state = {
     currentQ: 0,
     userGuess: null,
     TimeRemaining: 10,
- };
+};
 
 $("#submit").hide();
-$("#restart").hide();
 $(".area").hide();
+$(".results").hide();
+$("#restart").hide();
 
-$("#start").on("click", function() {
-    setInterval(setTimeRemaining,1000);
+$("#start").on("click", function () {
+    setInterval(setTimeRemaining, 1000);
     displayQ();
     $(".area").show();
     $("#submit").show();
 });
 
 
-function setTimeRemaining(){
+function setTimeRemaining() {
     state.TimeRemaining--;
     $("#timeleft").text(state.TimeRemaining + " seconds left!");
-  
-    if(state.TimeRemaining == 0){
+
+    if (state.TimeRemaining == 0) {
         alert("Time's up! You're lucky they want you alive. Next question.");
         state.currentQ++;
+        incorrect++;
+        console.log(correct + " correct " + incorrect + " incorrect");
         displayQ();
-        
+
     }
 }
 
-function resetTime(){
-
+function resetTime() {
     state.TimeRemaining = 10;
     $("#timeleft").show();
     $("#timeleft").text(state.TimeRemaining + " seconds left!");
 }
 
 
- function displayQ() {
+function displayQ() {
     resetTime();
     $("#start").hide();
     $("#restart-button").hide();
@@ -76,9 +79,8 @@ function resetTime(){
     var q = questions[state.currentQ];
     $("#question").text(q.question);
     $("#answers").empty();
-    
 
-    for (var i = 0; i < q.answers.length; i++){
+    for (var i = 0; i < q.answers.length; i++) {
         var answer = $('<h3 data-position="$(i)">');
         answer.data("position", i);
         answer.addClass("answer");
@@ -86,46 +88,54 @@ function resetTime(){
         answer.text(q.answers[i]);
     }
 
-    $(".answer").on("click", function(){
-        input = $(this).data("position"); 
-        console.log (input);
+    $(".answer").on("click", function () {
+        input = $(this).data("position");
+        console.log(input);
     });
     console.log(state.currentQ);
-    
-    
- }
 
- $("#submit").on("click", function(){
+}
+
+
+
+$("#submit").on("click", function () {
     if (input == questions[state.currentQ].correctAnswer) {
         $("#correct-answer").text("You are correct! Power! Unlimited Power!");
-        console.log("nice");
-        $(".area").hide();
 
+        correct++;
+        console.log(correct + " correct " + incorrect + " incorrect");
+        $(".area").hide();
         $("#timeleft").hide();
         $("#timeout").text("Next question will appear in 3 seconds.");
-        
-       
-    }
 
-    else{
+
+    } else {
         $("#correct-answer").text("Your overconfidence is your weakness. The correct answer is: " + questions[state.currentQ].answers[questions[state.currentQ].correctAnswer]);
-        console.log("soemthing");
-        $(".area").hide();
 
+        incorrect++;
+        console.log(correct + " correct " + incorrect + " incorrect");
+        $(".area").hide();
         $("#timeleft").hide();
         $("#timeout").text("Next question will appear in 3 seconds.");
-        
-        
     }
-    setTimeout(displayQ, 3*1000);
-    state.currentQ++;
     
+    setTimeout(displayQ, 3 * 1000);
+    state.currentQ++;
+    resultsScreen();
+    setTimeout(resultsScreen, 3*1000);
+
 });
- 
 
 
 
 
+function resultsScreen() {
+    if (state.currentQ == 5) {
+        $(".container").empty();
+        state.TimeRemaining = 9999999999;
+        $(".results").show();
+        $("#number-correct").text("You got " + correct + " correct and " + incorrect + " incorrect! Just think where we might be without the Jedi...")
+    }
 
 
-
+}
