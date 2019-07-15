@@ -68,7 +68,6 @@ function resetTime() {
     $("#timeleft").text(state.TimeRemaining + " seconds left!");
 }
 
-
 function displayQ() {
     resetTime();
     $("#start").hide();
@@ -118,11 +117,11 @@ $("#submit").on("click", function () {
         $("#timeleft").hide();
         $("#timeout").text("Next question will appear in 3 seconds.");
     }
-    
+
     setTimeout(displayQ, 3 * 1000);
     state.currentQ++;
     resultsScreen();
-    setTimeout(resultsScreen, 3*1000);
+    setTimeout(resultsScreen, 3 * 1000);
 
 });
 
@@ -134,8 +133,12 @@ function resultsScreen() {
         $(".container").empty();
         state.TimeRemaining = 9999999999;
         $(".results").show();
+        $("#restart").show();
         $("#number-correct").text("You got " + correct + " correct and " + incorrect + " incorrect! Just think where we might be without the Jedi...")
+        
     }
-
-
 }
+
+$("#restart").click(function () {
+    location.reload(true);
+});
